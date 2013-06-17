@@ -113,7 +113,6 @@ public class MemoryReadTask extends AProgrammerTask
 				out.write(ProtocolConstants.CMD_VERIFY.getBytes());
 				logger.log("Командата за четене е изпратена", LogLevel.DEBUG);
 				
-				Thread.sleep(100); // waste some time to make sure all is read
 				int read = in.read(buf);
 				String received = new String(buf).toUpperCase();
 				if(read <= 0)
@@ -147,7 +146,7 @@ public class MemoryReadTask extends AProgrammerTask
 			logger.log("Възникна грешка при четенето на паметта", LogLevel.ERRORS);
 			taskComplete();
 			ex.printStackTrace();
-		} catch (InterruptedException e){}
+		}
 	}
 	
 	/**

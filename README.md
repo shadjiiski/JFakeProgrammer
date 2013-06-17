@@ -18,8 +18,14 @@ graphic user interface for controling the programmer. Supported operations:
 
 _(Bad news: log messages and tooltip texts are still only in Bulgarian)_
 
-Supported microcontrollers are AT89C4051 and AT89C2051. The programmer is a device of the same type itself.
-Assembly sources are still under construction but available on demand.
+Supported microcontrollers are AT89C4051 and AT89C2051. The programmer is a device of the same type itself. Firmware sources are available at [AFakeProgrammer](https://github.com/shadjiiski/AFakeProgrammer)
+
+System requirements and Installation
+====================================
+all systems that have the JRE 1.7 installed will support the programmer. To install follow the steps:
+* Download and unzip [latest release](JFakeProg/out/release.zip)
+* For *nix users set execute flag to launcher.sh
+* Double click the launcher
 
 Screenshots
 -----------
