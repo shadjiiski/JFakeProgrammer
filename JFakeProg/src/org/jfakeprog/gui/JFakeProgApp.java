@@ -55,7 +55,6 @@ import org.jfakeprog.hex.util.HEXRecordSet;
 import org.jfakeprog.log.LogLevel;
 import org.jfakeprog.tasks.EraseMemoryTask;
 import org.jfakeprog.tasks.MemoryReadTask;
-import org.jfakeprog.tasks.MemorySizeTask;
 import org.jfakeprog.tasks.PingPongTask;
 import org.jfakeprog.tasks.ProgramTask;
 import org.jfakeprog.tasks.SingleRecordDumpTask;
@@ -69,7 +68,7 @@ public class JFakeProgApp extends JFrame
 {
 	private static final long serialVersionUID = 3680371570177832025L;
 	
-	public enum MemorySize
+	private enum MemorySize
 	{
 		LARGE(4), SMALL(2);
 		private int size;
@@ -136,8 +135,8 @@ public class JFakeProgApp extends JFrame
 		});
 		
 		memorySize = MemorySize.LARGE;
-		connectionHandler = new ConnectionHandler();
-//		connectionHandler = new ConnectionHandler("COM16");
+//		connectionHandler = new ConnectionHandler();
+		connectionHandler = new ConnectionHandler("COM16");
 //		connectionHandler.connect();
 //		System.out.println("connected = " + connectionHandler.isConnected());
 		
@@ -600,7 +599,6 @@ public class JFakeProgApp extends JFrame
 			try
 			{
 				hexRecords = new HEXFileParser(hexFile).parse();
-				hexRecords.shortenRecords(8);
 				
 //				There's a program in the memory so file save, program and verify should be enabled now
 				fileSaveAction.setEnabled(true);
@@ -990,7 +988,6 @@ public class JFakeProgApp extends JFrame
 				logger.setLogLevel(LogLevel.SUCCESS);
 			else if(none.isSelected())
 				logger.setLogLevel(LogLevel.NONE);
-			connectionHandler.addAProgrammerTask(new MemorySizeTask(JFakeProgApp.this, logger, memorySize));
 		}
 		
 	}

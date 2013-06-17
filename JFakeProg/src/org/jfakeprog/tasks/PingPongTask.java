@@ -77,6 +77,7 @@ public class PingPongTask extends AProgrammerTask
 				out.write(ProtocolConstants.MARK_DEBUG);
 				out.write(ProtocolConstants.CMD_DEBUG_PING.getBytes());
 				
+				Thread.sleep(100); // waste some time
 				byte[] buf = new byte[3];
 				int read = in.read(buf);
 				String received = new String(buf);
@@ -98,7 +99,7 @@ public class PingPongTask extends AProgrammerTask
 		{
 			logger.log("Възникна грешка по време на комуникацията: " + e.getMessage(), LogLevel.DEBUG);
 			e.printStackTrace();
-		}
+		} catch (InterruptedException e){}
 		finally
 		{
 			taskComplete();
